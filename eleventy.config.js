@@ -8,6 +8,8 @@ export default function (eleventyConfig) {
   // Static files copied as-is
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/favicon.svg": "favicon.svg" });
+  // Favicons for browsers/bookmarks that don't use the SVG (Safari, iOS home screen, old Chrome bookmarks)
+  eleventyConfig.addPassthroughCopy({ "src/favicon.ico": "favicon.ico", "src/apple-touch-icon.png": "apple-touch-icon.png", "src/icons": "icons", "src/site.webmanifest": "site.webmanifest" });
   eleventyConfig.addPassthroughCopy({ "src/.nojekyll": ".nojekyll" });
   // Resume: drop src/resume.pdf in and the homepage "Resume [PDF]" button downloads it
   eleventyConfig.addPassthroughCopy({ "src/resume.pdf": "resume.pdf" });

@@ -52,6 +52,10 @@ Write the body in normal Markdown. Code fences take a language: ` ```vex `, ` ``
 
 Upload your resume as `src/resume.pdf` (exactly this name). The "Resume [PDF]" button in the About section then downloads it as `Eunyoung-Kim-Resume.pdf`; the file is also at `/resume.pdf`. To update it, upload a new `resume.pdf` over the old one. Without the file, the button just scrolls to About.
 
+## Site icon
+
+The logo mark lives in `src/favicon.svg` (browser tab), with PNG/ICO copies for bookmarks and phones: `src/favicon.ico`, `src/apple-touch-icon.png`, `src/icons/*.png`. If the logo changes, regenerate all of them and bump `?v=2` in `src/_includes/layouts/base.njk` (and `site.webmanifest`) so browsers drop the cached icon.
+
 ## Files
 
 - `src/index.njk`: homepage (lists are generated from the posts)
