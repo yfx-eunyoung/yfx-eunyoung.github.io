@@ -1,0 +1,47 @@
+{
+  "notes": {
+    "key": "notes",
+    "url": "/notes/",
+    "label": "FX Notes",
+    "single": "FX Note",
+    "short": "N/",
+    "chip": "chip-n",
+    "tab": "NOTES",
+    "accent": "var(--ember)",
+    "art": "pat-n",
+    "eyebrow": "N/ FX NOTES",
+    "heading": "Short fixes, kept.",
+    "blurb": "Short Houdini tips and technical notes — one problem, one fix, usually a few lines of VEX.",
+    "feedLabel": "FX Note"
+  },
+  "rnd": {
+    "key": "rnd",
+    "url": "/rnd/",
+    "label": "R&D Breakdown",
+    "single": "R&D",
+    "short": "R/",
+    "chip": "chip-r",
+    "tab": "R&D",
+    "accent": "var(--cool)",
+    "art": "pat-a",
+    "eyebrow": "R/ R&D BREAKDOWN",
+    "heading": "Experiments, end to end.",
+    "blurb": "Setup, wedges, results and the parts that didn't work.",
+    "feedLabel": "R&D Breakdown"
+  },
+  "resources": {
+    "key": "resources",
+    "url": "/resources/",
+    "label": "Resources",
+    "single": "Resource",
+    "short": "T/",
+    "chip": "chip-t",
+    "tab": "RESOURCES",
+    "accent": "var(--ink-2)",
+    "art": "pat-t",
+    "eyebrow": "T/ RESOURCES",
+    "heading": "Take the HDA. Keep the VEX.",
+    "blurb": "Production-tested assets and snippets, free to use. Each ships with docs and a changelog.",
+    "feedLabel": "Resource"
+  }
+}

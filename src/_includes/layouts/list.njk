@@ -1,0 +1,47 @@
+---
+layout: layouts/base.njk
+---
+{#- Section index: every post in one section, newest first. -#}
+{%- set k = kinds[listKind] -%}
+{%- set items = collections[listKind] -%}
+<section class="list-hero">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">YFXLabs</a><span aria-hidden="true">/</span><span aria-current="page">{{ k.label }}</span></nav>
+    <span class="eyebrow" style="color:{{ k.accent }}">{{ k.eyebrow }}</span>
+    <h1 class="list-title">{{ k.heading }}</h1>
+    <div class="list-sub">
+      <p>{{ k.blurb }}</p>
+      <span class="list-count">{{ items | length }} {{ "ENTRY" if (items | length) == 1 else "ENTRIES" }}</span>
+    </div>
+    <nav class="kind-switch" aria-label="Sections">
+      {%- for key, kk in kinds %}
+      <a href="{{ kk.url }}"{% if key == listKind %} aria-current="page"{% endif %}><span>{{ kk.short }}</span>{{ "R&D" if key == "rnd" else kk.label }}</a>
+      {%- endfor %}
+    </nav>
+  </div>
+</section>
+
+<section class="wrap list-body">
+  {%- if items | length %}
+  <ol class="post-list">
+    {%- for p in items %}
+    <li>
+      <a class="post-row" href="{{ p.url }}">
+        <span class="pr-num">{{ p.data.version if listKind == "resources" else p.data.num }}</span>
+        <span class="pr-main">
+          <span class="pr-title">{{ p.data.title }}</span>
+          <span class="pr-sum">{{ p.data.summary }}</span>
+        </span>
+        <span class="pr-side">
+          <span class="pr-tag">{{ (p.data.type + " · " if listKind == "resources" else "") }}{{ p.data.topics | tagline }}</span>
+          <time class="pr-date" datetime="{{ p.date | isoDate }}">{{ p.date | isoDate }}</time>
+        </span>
+        <svg class="pr-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+    </li>
+    {%- endfor %}
+  </ol>
+  {%- else %}
+  <p class="list-empty">Nothing here yet.</p>
+  {%- endif %}
+</section>

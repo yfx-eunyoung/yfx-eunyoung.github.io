@@ -1,0 +1,5 @@
+{
+  "kind": "resources",
+  "layout": "layouts/post.njk",
+  "permalink": "/resources/{{ page.fileSlug }}/"
+}

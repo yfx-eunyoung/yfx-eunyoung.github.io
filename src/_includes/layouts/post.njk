@@ -1,0 +1,65 @@
+---
+layout: layouts/base.njk
+---
+{#- Detail page for one note, R&D breakdown or resource. Content comes from the Markdown file. -#}
+{%- set k = kinds[kind] -%}
+{%- set code = {kind: kind, num: num, type: type} | codeLabel -%}
+{%- set nb = collections[kind] | neighbours(page.url) -%}
+<article class="post post-{{ kind }}">
+  <header class="post-hero">
+    <div class="wrap post-hero-inner">
+      <div class="post-head">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">YFXLabs</a><span aria-hidden="true">/</span><a href="{{ k.url }}">{{ k.label }}</a><span aria-hidden="true">/</span><span aria-current="page">{{ version if kind == "resources" else num }}</span>
+        </nav>
+        <div class="post-chips">
+          <span class="chip {{ k.chip }}">{{ code }}</span>
+          {%- if sample %}<span class="chip chip-sample" title="Placeholder text — replace with the real write-up">SAMPLE</span>{% endif %}
+        </div>
+        <h1 class="post-title">{{ title }}</h1>
+        <p class="post-lede">{{ summary }}</p>
+        <dl class="post-meta">
+          <div><dt>DATE</dt><dd><time datetime="{{ page.date | isoDate }}">{{ page.date | isoDate }}</time></dd></div>
+          <div><dt>TOPICS</dt><dd>{{ topics | tagline }}</dd></div>
+          <div><dt>READ</dt><dd>{{ content | readMinutes }} min</dd></div>
+          {%- if houdini and kind != "resources" %}<div><dt>HOUDINI</dt><dd>{{ houdini }}</dd></div>{% endif %}
+        </dl>
+      </div>
+
+      {%- if kind == "resources" %}
+      <aside class="dl-card" id="download" aria-label="Download">
+        <div class="dl-top"><span class="chip chip-t">{{ type }}</span><span class="tool-ver">{{ version }}</span></div>
+        <span class="dl-name">{{ title }}</span>
+        <dl class="dl-facts">
+          {%- if houdini %}<div><dt>Houdini</dt><dd>{{ houdini }}</dd></div>{% endif %}
+          {%- if license %}<div><dt>License</dt><dd>{{ license }}</dd></div>{% endif %}
+          <div><dt>Updated</dt><dd>{{ page.date | isoDate }}</dd></div>
+        </dl>
+        {%- if download %}
+        <a class="btn btn-primary dl-btn" href="{{ download }}" download><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M5 20h14"></path></svg>Download {{ version }}</a>
+        {%- else %}
+        <span class="btn dl-btn is-off" aria-disabled="true">Download coming soon</span>
+        {%- endif %}
+      </aside>
+      {%- else %}
+      <div class="post-art {{ art or k.art }}" aria-hidden="true"><span class="chip {{ k.chip }}">{{ code }}</span></div>
+      {%- endif %}
+    </div>
+  </header>
+
+  <div class="wrap post-body">
+    <div class="prose">
+      {{ content | safe }}
+    </div>
+  </div>
+
+  <nav class="wrap post-nav" aria-label="More {{ k.label }}">
+    {%- if nb.older %}
+    <a class="pn pn-prev" href="{{ nb.older.url }}"><span class="pn-k">← OLDER</span><span class="pn-t">{{ nb.older.data.title }}</span></a>
+    {%- else %}<span class="pn pn-empty"></span>{% endif %}
+    {%- if nb.newer %}
+    <a class="pn pn-next" href="{{ nb.newer.url }}"><span class="pn-k">NEWER →</span><span class="pn-t">{{ nb.newer.data.title }}</span></a>
+    {%- else %}<span class="pn pn-empty"></span>{% endif %}
+    <a class="view-all pn-all" href="{{ k.url }}">ALL {{ k.tab }} →</a>
+  </nav>
+</article>

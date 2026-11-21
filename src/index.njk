@@ -1,0 +1,235 @@
+---
+layout: layouts/base.njk
+eleventyExcludeFromCollections: true
+---
+{#- Homepage. Lists below are generated from src/notes, src/rnd and src/resources (newest first). -#}
+{%- macro numOf(p) -%}{{ p.data.version if p.data.kind == "resources" else p.data.num }}{%- endmacro -%}
+{%- set latest = [] -%}
+{%- for key in ["rnd", "notes", "resources"] %}{% if collections[key][0] %}{% set latest = (latest.push(collections[key][0]), latest) %}{% endif %}{% endfor -%}
+{%- set boardKinds = ["notes", "rnd", "resources"] -%}
+<!-- HERO: multi-layer parallax + mouse 3D -->
+<section class="hero" id="top" data-hero>
+  <span id="m-top" class="sr-only"></span>
+  <div class="layer l-grid" aria-hidden="true"></div>
+  <div class="layer l-far" aria-hidden="true">
+    <svg class="d-only" viewBox="0 0 1440 860" preserveAspectRatio="xMidYMid slice" fill="none" stroke="var(--line-2)" stroke-width="1">
+      <g transform="translate(1080 400)"><path transform="scale(1) rotate(0)" vector-effect="non-scaling-stroke" d="M100,0 C100,45 60,95 5,98 C-50,101 -105,60 -100,5 C-95,-50 -55,-92 0,-100 C55,-108 100,-55 100,0 Z"></path><path transform="scale(1.6) rotate(9)" vector-effect="non-scaling-stroke" d="M100,0 C100,45 60,95 5,98 C-50,101 -105,60 -100,5 C-95,-50 -55,-92 0,-100 C55,-108 100,-55 100,0 Z"></path><path transform="scale(2.25) rotate(17)" vector-effect="non-scaling-stroke" d="M100,0 C100,45 60,95 5,98 C-50,101 -105,60 -100,5 C-95,-50 -55,-92 0,-100 C55,-108 100,-55 100,0 Z"></path><path transform="scale(3) rotate(26)" vector-effect="non-scaling-stroke" d="M100,0 C100,45 60,95 5,98 C-50,101 -105,60 -100,5 C-95,-50 -55,-92 0,-100 C55,-108 100,-55 100,0 Z"></path><path transform="scale(3.9) rotate(34)" vector-effect="non-scaling-stroke" d="M100,0 C100,45 60,95 5,98 C-50,101 -105,60 -100,5 C-95,-50 -55,-92 0,-100 C55,-108 100,-55 100,0 Z"></path><path transform="scale(5) rotate(41)" vector-effect="non-scaling-stroke" d="M100,0 C100,45 60,95 5,98 C-50,101 -105,60 -100,5 C-95,-50 -55,-92 0,-100 C55,-108 100,-55 100,0 Z"></path></g>
+      <g transform="translate(220 760)"><path transform="scale(0.8) rotate(-20)" vector-effect="non-scaling-stroke" d="M100,0 C100,45 60,95 5,98 C-50,101 -105,60 -100,5 C-95,-50 -55,-92 0,-100 C55,-108 100,-55 100,0 Z"></path><path transform="scale(1.4) rotate(-12)" vector-effect="non-scaling-stroke" d="M100,0 C100,45 60,95 5,98 C-50,101 -105,60 -100,5 C-95,-50 -55,-92 0,-100 C55,-108 100,-55 100,0 Z"></path><path transform="scale(2.1) rotate(-3)" vector-effect="non-scaling-stroke" d="M100,0 C100,45 60,95 5,98 C-50,101 -105,60 -100,5 C-95,-50 -55,-92 0,-100 C55,-108 100,-55 100,0 Z"></path></g>
+    </svg>
+    <svg class="m-only" viewBox="0 0 390 620" preserveAspectRatio="xMidYMid slice" fill="none" stroke="var(--line-2)" stroke-width="1">
+      <g transform="translate(300 170)"><path transform="scale(0.6) rotate(0)" vector-effect="non-scaling-stroke" d="M100,0 C100,45 60,95 5,98 C-50,101 -105,60 -100,5 C-95,-50 -55,-92 0,-100 C55,-108 100,-55 100,0 Z"></path><path transform="scale(1) rotate(10)" vector-effect="non-scaling-stroke" d="M100,0 C100,45 60,95 5,98 C-50,101 -105,60 -100,5 C-95,-50 -55,-92 0,-100 C55,-108 100,-55 100,0 Z"></path><path transform="scale(1.45) rotate(19)" vector-effect="non-scaling-stroke" d="M100,0 C100,45 60,95 5,98 C-50,101 -105,60 -100,5 C-95,-50 -55,-92 0,-100 C55,-108 100,-55 100,0 Z"></path><path transform="scale(1.95) rotate(28)" vector-effect="non-scaling-stroke" d="M100,0 C100,45 60,95 5,98 C-50,101 -105,60 -100,5 C-95,-50 -55,-92 0,-100 C55,-108 100,-55 100,0 Z"></path><path transform="scale(2.5) rotate(36)" vector-effect="non-scaling-stroke" d="M100,0 C100,45 60,95 5,98 C-50,101 -105,60 -100,5 C-95,-50 -55,-92 0,-100 C55,-108 100,-55 100,0 Z"></path></g>
+    </svg>
+  </div>
+  <div class="layer l-word" aria-hidden="true"><span>YFX</span></div>
+  <div class="layer l-mid" aria-hidden="true"><span class="dot hot d-dot" style="left:92.08%;top:28.92%;width:2.4px;height:2.4px;opacity:0.69"></span><span class="dot d-dot" style="left:32.93%;top:75.21%;width:3.5px;height:3.5px;opacity:0.58"></span><span class="dot d-dot" style="left:63.59%;top:81.68%;width:2.5px;height:2.5px;opacity:0.47"></span><span class="dot d-dot" style="left:69.80%;top:5.39%;width:3.4px;height:3.4px;opacity:0.53"></span><span class="dot d-dot" style="left:80.74%;top:12.28%;width:3.0px;height:3.0px;opacity:0.80"></span><span class="dot d-dot" style="left:64.38%;top:57.74%;width:3.8px;height:3.8px;opacity:0.80"></span><span class="dot d-dot" style="left:33.54%;top:83.72%;width:2.7px;height:2.7px;opacity:0.34"></span><span class="dot cold d-dot" style="left:42.85%;top:29.49%;width:3.9px;height:3.9px;opacity:0.58"></span><span class="dot d-dot" style="left:87.79%;top:5.86%;width:2.5px;height:2.5px;opacity:0.59"></span><span class="dot d-dot" style="left:42.14%;top:19.29%;width:3.8px;height:3.8px;opacity:0.28"></span><span class="dot d-dot" style="left:34.41%;top:66.44%;width:3.8px;height:3.8px;opacity:0.56"></span><span class="dot hot d-dot" style="left:40.56%;top:28.36%;width:2.7px;height:2.7px;opacity:0.50"></span><span class="dot d-dot" style="left:53.17%;top:61.40%;width:2.5px;height:2.5px;opacity:0.79"></span><span class="dot d-dot" style="left:86.30%;top:63.51%;width:3.3px;height:3.3px;opacity:0.56"></span><span class="dot d-dot" style="left:68.90%;top:93.96%;width:2.8px;height:2.8px;opacity:0.67"></span><span class="dot cold d-dot" style="left:58.69%;top:35.06%;width:2.7px;height:2.7px;opacity:0.48"></span><span class="dot d-dot" style="left:87.76%;top:11.11%;width:3.6px;height:3.6px;opacity:0.30"></span><span class="dot d-dot" style="left:15.36%;top:7.79%;width:4.0px;height:4.0px;opacity:0.38"></span><span class="dot d-dot" style="left:14.43%;top:45.71%;width:3.2px;height:3.2px;opacity:0.33"></span><span class="dot d-dot" style="left:88.46%;top:89.06%;width:3.8px;height:3.8px;opacity:0.79"></span><span class="dot d-dot" style="left:27.54%;top:1.05%;width:2.5px;height:2.5px;opacity:0.30"></span><span class="dot hot d-dot" style="left:61.68%;top:23.14%;width:3.5px;height:3.5px;opacity:0.54"></span><span class="dot d-dot" style="left:23.80%;top:88.21%;width:2.5px;height:2.5px;opacity:0.47"></span><span class="dot d-dot" style="left:11.84%;top:48.93%;width:2.0px;height:2.0px;opacity:0.80"></span><span class="dot d-dot" style="left:92.21%;top:2.10%;width:3.8px;height:3.8px;opacity:0.36"></span><span class="dot d-dot" style="left:56.53%;top:67.94%;width:2.5px;height:2.5px;opacity:0.38"></span><span class="dot cold d-dot" style="left:56.44%;top:5.23%;width:3.5px;height:3.5px;opacity:0.67"></span><span class="dot d-dot" style="left:49.82%;top:3.27%;width:2.2px;height:2.2px;opacity:0.80"></span><span class="dot hot d-dot" style="left:68.79%;top:89.30%;width:2.1px;height:2.1px;opacity:0.78"></span><span class="dot d-dot" style="left:99.27%;top:95.43%;width:3.5px;height:3.5px;opacity:0.50"></span><span class="dot cold d-dot" style="left:72.77%;top:88.22%;width:2.8px;height:2.8px;opacity:0.39"></span><span class="dot d-dot" style="left:88.70%;top:55.88%;width:2.7px;height:2.7px;opacity:0.62"></span><span class="dot d-dot" style="left:33.50%;top:72.52%;width:2.8px;height:2.8px;opacity:0.37"></span><span class="dot d-dot" style="left:98.55%;top:99.41%;width:3.3px;height:3.3px;opacity:0.77"></span><span class="dot hot m-dot" style="left:92.08%;top:17.35%;width:2.4px;height:2.4px;opacity:0.69"></span><span class="dot m-dot" style="left:32.93%;top:45.12%;width:3.5px;height:3.5px;opacity:0.58"></span><span class="dot m-dot" style="left:63.59%;top:49.01%;width:2.5px;height:2.5px;opacity:0.47"></span><span class="dot m-dot" style="left:69.80%;top:3.23%;width:3.4px;height:3.4px;opacity:0.53"></span><span class="dot m-dot" style="left:80.74%;top:7.37%;width:3.0px;height:3.0px;opacity:0.80"></span><span class="dot m-dot" style="left:64.38%;top:34.65%;width:3.8px;height:3.8px;opacity:0.80"></span><span class="dot m-dot" style="left:33.54%;top:50.23%;width:2.7px;height:2.7px;opacity:0.34"></span><span class="dot cold m-dot" style="left:42.85%;top:17.69%;width:3.9px;height:3.9px;opacity:0.58"></span><span class="dot m-dot" style="left:87.79%;top:3.52%;width:2.5px;height:2.5px;opacity:0.59"></span><span class="dot m-dot" style="left:42.14%;top:11.58%;width:3.8px;height:3.8px;opacity:0.28"></span><span class="dot m-dot" style="left:34.41%;top:39.87%;width:3.8px;height:3.8px;opacity:0.56"></span><span class="dot hot m-dot" style="left:40.56%;top:17.02%;width:2.7px;height:2.7px;opacity:0.50"></span><span class="dot m-dot" style="left:53.17%;top:36.84%;width:2.5px;height:2.5px;opacity:0.79"></span><span class="dot m-dot" style="left:86.30%;top:38.11%;width:3.3px;height:3.3px;opacity:0.56"></span><span class="dot m-dot" style="left:68.90%;top:56.37%;width:2.8px;height:2.8px;opacity:0.67"></span><span class="dot cold m-dot" style="left:58.69%;top:21.04%;width:2.7px;height:2.7px;opacity:0.48"></span><span class="dot m-dot" style="left:87.76%;top:6.66%;width:3.6px;height:3.6px;opacity:0.30"></span><span class="dot m-dot" style="left:15.36%;top:4.67%;width:4.0px;height:4.0px;opacity:0.38"></span></div>
+  <div class="layer l-near" aria-hidden="true"><span class="dot hot d-dot" style="left:96.99%;top:76.01%;width:7.7px;height:7.7px;opacity:0.54"></span><span class="dot d-dot" style="left:28.11%;top:77.67%;width:8.1px;height:8.1px;opacity:0.28"></span><span class="dot d-dot" style="left:26.69%;top:61.78%;width:4.7px;height:4.7px;opacity:0.77"></span><span class="dot cold d-dot" style="left:7.46%;top:70.05%;width:8.5px;height:8.5px;opacity:0.30"></span><span class="dot d-dot" style="left:49.63%;top:59.69%;width:7.3px;height:7.3px;opacity:0.25"></span><span class="dot d-dot" style="left:36.88%;top:50.66%;width:8.3px;height:8.3px;opacity:0.74"></span><span class="dot d-dot" style="left:36.00%;top:88.32%;width:5.6px;height:5.6px;opacity:0.84"></span><span class="dot d-dot" style="left:57.01%;top:83.34%;width:4.9px;height:4.9px;opacity:0.40"></span><span class="dot d-dot" style="left:41.21%;top:76.21%;width:6.8px;height:6.8px;opacity:0.42"></span><span class="dot d-dot" style="left:47.88%;top:50.83%;width:8.1px;height:8.1px;opacity:0.68"></span><span class="dot d-dot" style="left:47.36%;top:63.75%;width:4.1px;height:4.1px;opacity:0.67"></span><span class="dot hot d-dot" style="left:27.31%;top:68.67%;width:7.7px;height:7.7px;opacity:0.56"></span><span class="dot hot m-dot" style="left:96.99%;top:45.61%;width:6.9px;height:6.9px;opacity:0.54"></span><span class="dot m-dot" style="left:28.11%;top:46.60%;width:7.3px;height:7.3px;opacity:0.28"></span><span class="dot m-dot" style="left:26.69%;top:37.07%;width:4.6px;height:4.6px;opacity:0.77"></span><span class="dot cold m-dot" style="left:7.46%;top:42.03%;width:7.6px;height:7.6px;opacity:0.30"></span><span class="dot m-dot" style="left:49.63%;top:35.81%;width:6.7px;height:6.7px;opacity:0.25"></span><span class="dot m-dot" style="left:36.88%;top:30.40%;width:7.4px;height:7.4px;opacity:0.74"></span><span class="dot m-dot" style="left:36.00%;top:52.99%;width:5.3px;height:5.3px;opacity:0.84"></span></div>
+
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="hero-kicker"><span class="dot-ember"></span><span><span class="t-d">YFXLabs / </span>FX TD working notebook</span></div>
+      <h1>Notes from inside the <em>solver</em>.</h1>
+      <p class="hero-lede">Houdini tips, R&amp;D breakdowns and resources — archived <span class="t-d">straight </span>from production work by Eunyoung Kim, Senior FX TD.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/notes/"><span class="t-d">Browse FX Notes</span><span class="t-m">Browse notes</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        <a class="btn" href="/resources/">Resources</a>
+      </div>
+      <span class="hero-frame">F <span class="frame-count"></span> / 240 · SCROLL TO ADVANCE</span>
+    </div>
+
+    <div class="tilt-stage d-only" aria-label="Latest update">
+      <div class="viewport">
+        <div class="vp-window">
+          <div class="vp-bar">
+            <span>/yfx/latest/<span data-l="path">{{ latest[0].data.kind }}/{{ latest[0].fileSlug }}</span></span>
+            <div class="feed-dots" data-feed-dots>
+              {%- for p in latest %}<button type="button" class="feed-dot" data-pick="{{ loop.index0 }}" aria-label="Show {{ p.data.title }}" aria-current="{{ 'true' if loop.first else 'false' }}"><span></span></button>{% endfor %}
+            </div>
+          </div>
+          {%- set f = latest[0] %}{%- set k = kinds[f.data.kind] %}
+          <a class="vp-entry" data-l="href" href="{{ f.url }}">
+            <span class="vp-art {{ f.data.art or k.art }}" data-l="pat">
+              <span class="chip {{ k.chip }}" data-l="code">{{ f | codeLabel }}</span>
+              <span class="vp-new">NEW</span>
+            </span>
+            <span class="vp-text">
+              <span class="vp-tag" data-l="tag">{{ f.data.topics | tagline }}</span>
+              <span class="vp-title" data-l="title">{{ f.data.title }}</span>
+              <span class="vp-body" data-l="body">{{ f.data.summary }}</span>
+            </span>
+          </a>
+          <div class="vp-foot">
+            <span><span data-l="date">{{ f.date | isoDate }}</span> · <span data-l="idx">1 / {{ latest | length }}</span></span>
+            <a data-l="href" href="{{ f.url }}">Open →</a>
+          </div>
+        </div>
+        <div class="float-z1"><span class="dot-ember"></span><span>Latest update</span></div>
+        <div class="float-z2" data-l="kindLabel">{{ k.feedLabel }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">Scroll to advance the frame</div>
+</section>
+
+
+<!-- MOBILE: latest swipe carousel -->
+<section class="m-latest m-only" aria-label="Latest updates">
+  <div class="m-latest-head">
+    <span class="eyebrow" style="color:var(--ember)">LATEST UPDATES</span>
+    <div class="feed-dots" data-mfeed-dots>
+      {%- for p in latest %}<button type="button" class="feed-dot" data-mpick="{{ loop.index0 }}" aria-label="Show {{ p.data.title }}" aria-current="{{ 'true' if loop.first else 'false' }}"><span></span></button>{% endfor %}
+    </div>
+  </div>
+  <div class="m-latest-track hscroll" data-mlatest>
+    {%- for p in latest %}{% set k = kinds[p.data.kind] %}
+    <a class="m-card snap" href="{{ p.url }}">
+      <span class="art {{ p.data.art or k.art }}"><span class="chip {{ k.chip }}">{{ p | codeLabel }}</span><span class="kind">{{ k.single }}</span></span>
+      <span class="txt"><span class="ttl">{{ p.data.title }}</span><span class="body">{{ p.data.summaryShort or p.data.summary }}</span><span class="meta">{{ p.date | isoDate }} · {{ p.data.version if p.data.kind == "resources" else (p.data.topics | tagline) }}</span></span>
+    </a>
+    {%- endfor %}
+  </div>
+</section>
+
+<!-- AT A GLANCE (desktop): all three content types side by side -->
+<section class="section section-glance d-only" id="glance" style="display:block">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 class="h2">Latest from the lab.</h2>
+      <p>Short tips, full experiments and free downloads — the newest of each, side by side.</p>
+    </div>
+    <div class="board">
+      {%- for key in boardKinds %}{% set k = kinds[key] %}
+      <div class="board-col reveal">
+        <div class="board-head">
+          <div class="top"><span class="chip {{ k.chip }}">{{ k.short }} {{ "R&D" if key == "rnd" else k.label }}</span><a class="all" href="{{ k.url }}" aria-label="All {{ k.label }}">ALL →</a></div>
+          <h3>{{ k.label }}</h3>
+          <p>{{ {notes: "Short Houdini tips and technical notes.", rnd: "Experiments, process and results.", resources: "HDAs and VEX code, free to download."}[key] }}</p>
+        </div>
+        <div class="board-list">
+          {%- for p in collections[key] | head(3) %}
+          <a class="g-row" href="{{ p.url }}"><span class="num">{{ numOf(p) }}</span><span class="txt"><span class="ttl">{{ p.data.title }}</span><span class="tag">{{ p.data.topics | tagline }}</span></span></a>
+          {%- endfor %}
+        </div>
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- AT A GLANCE (mobile): tabs -->
+<section class="m-glance m-only" id="m-glance" style="flex-direction:column">
+  <h2 class="h2 reveal">Latest from the lab.</h2>
+  <div class="tabs reveal" role="tablist" aria-label="Content type">
+    {%- for key in boardKinds %}
+    <button type="button" class="tab" role="tab" id="tab-{{ loop.index0 }}" aria-controls="tabpanel-{{ loop.index0 }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ 0 if loop.first else -1 }}" data-tab="{{ loop.index0 }}" data-href="{{ kinds[key].url }}">{{ kinds[key].tab }}</button>
+    {%- endfor %}
+  </div>
+  {%- for key in boardKinds %}
+  <div class="m-rows reveal" role="tabpanel" id="tabpanel-{{ loop.index0 }}" aria-labelledby="tab-{{ loop.index0 }}"{% if not loop.first %} hidden{% endif %}>
+    {%- for p in collections[key] | head(3) %}
+    <a class="row" href="{{ p.url }}"><span class="num">{{ numOf(p) }}</span><span class="txt"><span class="ttl">{{ p.data.title }}</span><span class="tag">{{ p.data.topics | tagline }}</span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+    {%- endfor %}
+  </div>
+  {%- endfor %}
+  <a class="view-all" href="/notes/" data-view-all>VIEW ALL <span data-tab-name>NOTES</span> →</a>
+</section>
+
+<!-- R&D: perspective gallery (desktop) / coverflow (mobile) -->
+{%- set rnd = collections.rnd | head(5) %}
+{%- set mid = ((rnd | length) - 1) / 2 %}
+<section class="section section-rnd" id="rnd" data-gallery>
+  <span id="m-rnd" class="sr-only"></span>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="stack">
+        <span class="eyebrow" style="color:var(--cool)">R/ R&amp;D BREAKDOWN</span>
+        <h2 class="h2">Experiments, end to end.</h2>
+      </div>
+      <p><span class="t-d">Setup, wedges, results and the parts that didn't work.</span><span class="t-m">Swipe through setups, wedges and results.</span></p>
+    </div>
+    <div class="gallery d-only" style="display:block">
+      <div class="gallery-row">
+        {%- for p in rnd %}{% set kk = (loop.index0 - mid) | round(0, "floor") %}
+        <a class="g-card" href="{{ p.url }}" style="--k:{{ kk }};--d:{{ kk | abs }}">
+          <span class="card-art {{ p.data.art or 'pat-a' }}"></span>
+          <span class="card-text"><span class="card-meta"><span class="t">{{ p.data.topics | tagline }}</span><span class="n">{{ p.data.num }}</span></span><span class="card-title">{{ p.data.title }}</span><span class="card-body">{{ p.data.summary }}</span></span>
+        </a>
+        {%- endfor %}
+      </div>
+    </div>
+    <div class="flow hscroll m-only" data-flow>
+      {%- for p in rnd %}
+      <a class="flow-card snap" href="{{ p.url }}">
+        <span class="card-art {{ p.data.art or 'pat-a' }}"></span>
+        <span class="card-text"><span class="card-meta"><span class="t">{{ p.data.topics | tagline }}</span><span class="n">{{ p.data.num }}</span></span><span class="card-title">{{ p.data.title }}</span><span class="card-body">{{ p.data.summaryShort or p.data.summary }}</span></span>
+      </a>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section class="section section-tools" id="tools">
+  <span id="m-tools" class="sr-only"></span>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="stack">
+        <span class="eyebrow muted">T/ RESOURCES</span>
+        <h2 class="h2">Take the HDA. Keep the VEX.</h2>
+      </div>
+      <p class="d-only" style="display:block">Production-tested assets and snippets, free to use. Each ships with docs and a changelog.</p>
+    </div>
+    <div class="tools">
+      {%- for p in collections.resources | head(3) %}
+      <article class="tool reveal" data-tilt>
+        <span class="sheen"></span>
+        <div class="tool-top lift"><span class="chip chip-t">{{ p.data.type }}</span><span class="tool-ver">{{ p.data.version }}</span></div>
+        <h3 class="lift"><a class="tool-link" href="{{ p.url }}">{{ p.data.title }}</a></h3>
+        <p><span class="t-d">{{ p.data.summary }}</span><span class="t-m">{{ p.data.summaryShort or p.data.summary }}</span></p>
+        <div class="tool-actions">
+          <a class="btn btn-sm" href="{{ p.data.download if p.data.download else (p.url + '#download') }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M5 20h14"></path></svg>Download</a>
+          <a class="btn btn-sm btn-ghost" href="{{ p.url }}">Docs</a>
+        </div>
+      </article>
+      {%- endfor %}
+    </div>
+    <div class="code reveal">
+      <div class="code-bar">
+        <span><span class="t-d">pointwrangle · </span>orient_from_v.vfl</span>
+        <button type="button" class="btn code-copy" data-copy><span class="t-d" data-copy-label>Copy VEX</span><span class="t-m" data-copy-label-m>Copy</span></button>
+      </div>
+<pre data-code><span class="c-line"><span class="c">// Velocity-aligned orient + speed-based pscale for instancing</span>
+</span><span class="k">vector</span> fwd = normalize(v@v);
+<span class="k">vector</span> up  = abs(fwd.y) &gt; 0.99 ? set(1,0,0) : set(0,1,0);
+p@orient   = quaternion(maketransform(fwd, up));
+f@pscale  *= fit(length(v@v), 0, chf(<span class="s">"vmax"</span>), 0.4, 1.2);</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <span id="m-about" class="sr-only"></span>
+  <div class="wrap about">
+    <div class="about-copy reveal">
+      <span class="eyebrow" style="color:var(--ember)">A/ ABOUT</span>
+      <h2 class="h2">Hi, I'm Eunyoung.</h2>
+      <p>Senior FX TD with about ten years of film work across Korea, Canada and Australia. <span class="t-d">YFXLabs is where I keep the fixes, experiments and tools that came out of it — written so the next person doesn't have to solve them twice.</span><span class="t-m">YFXLabs keeps the fixes, experiments and tools that came out of it.</span></p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="mailto:eeeeeunyoung@gmail.com">Get in touch</a>
+        <a class="btn" href="#about">Resume [PDF]</a>
+      </div>
+    </div>
+    <div class="facts reveal">
+      <div class="fact"><span>FOCUS</span><span>FLIP, pyro, Vellum, OpenVDB<span class="t-d">, particles</span></span></div>
+      <div class="fact d-fact"><span>TOOLKIT</span><span>Houdini (VEX, DOPs, SOPs), Python, C++, Nuke, Katana</span></div>
+      <div class="fact"><span>BASED IN</span><span>Melbourne, Australia</span></div>
+      <div class="fact d-fact"><span>CONTACT</span><a href="mailto:eeeeeunyoung@gmail.com">eeeeeunyoung@gmail.com</a></div>
+    </div>
+    <a class="btn btn-primary about-cta m-only" href="mailto:eeeeeunyoung@gmail.com">Get in touch</a>
+  </div>
+</section>
+
+<script type="application/json" id="feed-data">[
+{%- for p in latest %}{% set k = kinds[p.data.kind] %}
+{{ {title: p.data.title, body: p.data.summary, tag: (p.data.topics | tagline) + ((" · " + p.data.version) if p.data.kind == "resources" else ""), date: (p.date | isoDate), href: p.url, path: p.data.kind + "/" + p.fileSlug, code: p | codeLabel, chip: k.chip, pat: (p.data.art or k.art), kindLabel: k.feedLabel} | toJson | safe }}{% if not loop.last %},{% endif %}
+{%- endfor %}]</script>

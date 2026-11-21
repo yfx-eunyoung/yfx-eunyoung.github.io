@@ -1,0 +1,15 @@
+{
+  "name": "yfx-eunyoung.github.io",
+  "private": true,
+  "description": "YFXLabs — FX TD working notebook",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy-plugin-rss": "^3.0.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2"
+  },
+  "type": "module"
+}

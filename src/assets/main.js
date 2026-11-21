@@ -1,4 +1,4 @@
-/* yfxlabs.dev — homepage interactions
+/* yfxlabs.dev — site interactions (homepage + shared nav/theme/menu)
    scroll parallax + frame counter, nav progress, mouse 3D, latest-feed rotation,
    R&D gallery tilt, card tilt, theme toggle with circular reveal, mobile menu/tabs/carousels. */
 (function () {
@@ -194,6 +194,8 @@
       if (panel) panel.hidden = !on;
     });
     if (tabName) tabName.textContent = tabs[i].textContent;
+    var viewAll = $('[data-view-all]');
+    if (viewAll && tabs[i].dataset.href) viewAll.setAttribute('href', tabs[i].dataset.href);
     if (focus) tabs[i].focus();
   }
   tabs.forEach(function (t, i) {
