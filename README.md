@@ -23,11 +23,26 @@ topics: [VEX, SOLVERS]
 summary: "One or two sentences for cards and search results."
 summaryShort: "Optional shorter text for mobile cards."
 art: pat-a              # rnd only: pat-a … pat-e card pattern
+preview: my-post        # optional, rnd + resources: homepage card illustration
 draft: true             # optional: hides the post
 ---
 ```
 
 Resources also take `type: "HDA · SOP"`, `version: "v1.0"`, `houdini: "20.5+"`, `license` and `download` (a link, or a file path such as `yfx_orient_from_v.hda` placed next to the Markdown file).
+
+### Homepage card previews (`preview:`)
+
+On the homepage, R&D cards and Resource cards can show an illustration instead of a plain pattern. `preview:` names a file in `src/_includes/previews/` (without the extension):
+
+| Section | File | Shown in |
+|---|---|---|
+| R&D | `src/_includes/previews/rnd/<preview>.svg` | R&D gallery (desktop) and swipe cards (mobile), 150px tall |
+| Resources | `src/_includes/previews/resources/<preview>.html` | Top of the resource card, desktop only, 180px tall |
+
+- No `preview:` → R&D cards fall back to the `art` pattern; Resource cards show no preview area.
+- R&D SVGs: use `viewBox="0 0 300 150"` with `preserveAspectRatio="xMidYMid slice"`, no fixed width/height, and colour with the theme variables (`var(--ember)`, `var(--cool)`, `var(--ink)`, `var(--ink-2)`, `var(--ink-3)`, `var(--line-2)`, `var(--bg)`) so they work in dark and light mode. Copy one of the existing files as a starting point.
+- Resource previews are a small HTML fragment. Ready-made styles: `pv-grid pv-hda` (node graph: `.node`, `.node.hot`, `.wire`, `.wire.hot`), `pv-fade pv-vex` (code that fades out; escape `<` as `&lt;`), `pv-py` (shelf `.shelf` + dialog `.dlg`). See the three files in `previews/resources/`.
+- The "R/0x · PREVIEW" / "PREVIEW" label is added automatically.
 
 Remove `sample: true` once a post has real content; it shows a SAMPLE chip.
 
@@ -36,6 +51,7 @@ Write the body in normal Markdown. Code fences take a language: ` ```vex `, ` ``
 ## Files
 
 - `src/index.njk`: homepage (lists are generated from the posts)
+- `src/_includes/previews/`: homepage card illustrations (`rnd/*.svg`, `resources/*.html`)
 - `src/_includes/layouts/`: `base.njk` (nav, footer), `post.njk` (detail page), `list.njk` (section page)
 - `src/_data/kinds.json`: section names, colours and blurbs
 - `src/assets/`: `styles.css` + `main.js` (homepage), `pages.css` + `pages.js` (list and detail pages)
