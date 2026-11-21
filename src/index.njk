@@ -32,7 +32,8 @@ eleventyExcludeFromCollections: true
   <div class="hero-inner">
     <div class="hero-copy">
       <div class="hero-kicker"><span class="dot-ember"></span><span><span class="t-d">YFXLabs / </span>FX TD working notebook</span></div>
-      <h1>Notes from inside the <em>solver</em>.</h1>
+      <h1>Somewhere Between <em>Nodes</em></h1>
+      <p class="hero-sub">Small experiments, useful findings, and notes from my FX journey.</p>
       <p class="hero-lede">Houdini tips, R&amp;D breakdowns and resources — archived <span class="t-d">straight </span>from production work by Eunyoung Kim, Senior FX TD.</p>
       <div class="btn-row">
         <a class="btn btn-primary" href="/notes/"><span class="t-d">Browse FX Notes</span><span class="t-m">Browse notes</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
@@ -106,7 +107,7 @@ eleventyExcludeFromCollections: true
       <div class="board-col reveal">
         <div class="board-head">
           <div class="top"><span class="chip {{ k.chip }}">{{ k.short }} {{ "R&D" if key == "rnd" else k.label }}</span><a class="all" href="{{ k.url }}" aria-label="All {{ k.label }}">ALL →</a></div>
-          <h3>{{ k.label }}</h3>
+          <h3>{{ k.boardTitle or k.label }}</h3>
           <p>{{ {notes: "Short Houdini tips and technical notes.", rnd: "Experiments, process and results.", resources: "HDAs and VEX code, free to download."}[key] }}</p>
         </div>
         <div class="board-list">

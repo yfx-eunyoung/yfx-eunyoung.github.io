@@ -18,6 +18,7 @@
     "key": "rnd",
     "url": "/rnd/",
     "label": "R&D Breakdown",
+    "boardTitle": "R&D",
     "single": "R&D",
     "short": "R/",
     "chip": "chip-r",
