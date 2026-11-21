@@ -1,0 +1,40 @@
+<svg viewBox="0 0 300 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<path d="M-10 112 C40 100 70 120 110 96 C140 78 150 40 176 44 C200 48 196 86 230 98 C260 108 290 100 310 106 L310 160 L-10 160 Z" fill="var(--cool)" opacity="0.35">
+</path>
+<path d="M-10 112 C40 100 70 120 110 96 C140 78 150 40 176 44 C200 48 196 86 230 98 C260 108 290 100 310 106" fill="none" stroke="var(--cool)" stroke-width="1.6">
+</path>
+<g fill="var(--ink)">
+<circle cx="168" cy="30" r="1.6">
+</circle>
+<circle cx="182" cy="22" r="1.2">
+</circle>
+<circle cx="156" cy="18" r="1">
+</circle>
+<circle cx="196" cy="34" r="1.4">
+</circle>
+<circle cx="174" cy="12" r="1">
+</circle>
+<circle cx="144" cy="34" r="1.2">
+</circle>
+<circle cx="206" cy="20" r="0.9">
+</circle>
+<circle cx="190" cy="8" r="0.8">
+</circle>
+<circle cx="136" cy="22" r="0.8">
+</circle>
+</g>
+<g fill="var(--ink-2)" opacity="0.8">
+<circle cx="120" cy="94" r="1.4">
+</circle>
+<circle cx="128" cy="90" r="1">
+</circle>
+<circle cx="214" cy="94" r="1.4">
+</circle>
+<circle cx="222" cy="98" r="1">
+</circle>
+<circle cx="236" cy="100" r="1.2">
+</circle>
+<circle cx="100" cy="100" r="1">
+</circle>
+</g>
+</svg>

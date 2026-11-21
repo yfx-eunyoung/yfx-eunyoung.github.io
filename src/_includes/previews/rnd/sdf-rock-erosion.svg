@@ -1,0 +1,14 @@
+<svg viewBox="0 0 300 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<g fill="none" stroke="var(--line-2)" stroke-width="1">
+<path d="M70 130 L90 70 L130 44 L184 50 L220 84 L234 130 Z" transform="translate(152 87) scale(1.35) translate(-152 -87)">
+</path>
+<path d="M70 130 L90 70 L130 44 L184 50 L220 84 L234 130 Z" transform="translate(152 87) scale(1.18) translate(-152 -87)">
+</path>
+</g>
+<path d="M70 130 L84 96 L90 70 L108 60 L130 44 L150 50 L160 44 L184 50 L198 64 L220 84 L226 104 L234 130 Z" fill="var(--ink-3)" opacity="0.55">
+</path>
+<path d="M70 130 L78 110 L84 96 L88 84 L90 70 L100 66 L108 60 L118 52 L130 44 L140 48 L150 50 L160 44 L172 48 L184 50 L192 58 L198 64 L210 72 L220 84 L222 94 L226 104 L230 118 L234 130" fill="none" stroke="var(--ink)" stroke-width="1.4">
+</path>
+<path d="M110 130 L130 92 L150 104 L166 76" fill="none" stroke="var(--ember)" stroke-width="1.4">
+</path>
+</svg>

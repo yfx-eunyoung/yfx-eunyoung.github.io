@@ -1,6 +1,7 @@
 ---
 title: "yfx_curl_layers"
 type: "VEX"
+preview: yfx-curl-layers
 version: "v0.3"
 houdini: "19.5+"
 license: "Free to use"

@@ -1,0 +1,9 @@
+<span class="pv-fade pv-vex">vector p = v@P * chf("freq");
+vector f = set(0, 0, 0);
+float amp = 1.0;
+for (int i = 0; i &lt; chi("octaves"); i++) {
+    f += curlnoise(p + @Time * chf("speed")) * amp;
+    p *= 2.0;
+    amp *= chf("falloff");
+}
+v@v += f * chf("strength") * @TimeInc;</span>

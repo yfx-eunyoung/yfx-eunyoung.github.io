@@ -2,6 +2,7 @@
 title: "Wet sand that clumps, then crumbles"
 num: "R/04"
 art: pat-d
+preview: wet-sand-clumping
 date: 2026-10-28
 topics: [VELLUM, GRAINS]
 summary: "Wedging attraction weight and friction until clumps hold their shape and break on impact."

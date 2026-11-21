@@ -1,6 +1,7 @@
 ---
 title: "yfx_orient_from_v"
 type: "HDA · SOP"
+preview: yfx-orient-from-v
 version: "v1.0"
 houdini: "20.5+"
 license: "Free to use"

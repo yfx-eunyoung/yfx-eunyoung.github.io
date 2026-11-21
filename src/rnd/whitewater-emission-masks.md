@@ -2,6 +2,7 @@
 title: "Whitewater emission masks"
 num: "R/03"
 art: pat-c
+preview: whitewater-emission-masks
 date: 2026-11-05
 topics: [FLIP, WHITEWATER]
 summary: "Curvature, vorticity and acceleration as emission drivers, compared on a single splash."

@@ -2,6 +2,7 @@
 title: "Curl noise vs. disturbance"
 num: "R/02"
 art: pat-b
+preview: curl-noise-vs-disturbance
 date: 2026-11-12
 topics: [PYRO, SHAPING]
 summary: "Same source, two shaping strategies: where each one breaks up the plume, and what it costs."

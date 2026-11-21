@@ -2,6 +2,7 @@
 title: "Lava crust: viscosity from temperature"
 num: "R/01"
 art: pat-a
+preview: lava-crust-viscosity
 date: 2026-11-20
 topics: [FLIP, VISCOSITY]
 summary: "A cooling ramp maps temperature to viscosity, so the crust stiffens while the core keeps flowing."

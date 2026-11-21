@@ -2,6 +2,7 @@
 title: "SDF erosion for rock breakup"
 num: "R/05"
 art: pat-e
+preview: sdf-rock-erosion
 date: 2026-10-20
 topics: [OPENVDB, SDF]
 summary: "Eroding a VDB signed distance field with noise to pre-break rocks with believable edges."

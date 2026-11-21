@@ -1,6 +1,7 @@
 ---
 title: "yfx_cache_versioner"
 type: "PYTHON"
+preview: yfx-cache-versioner
 version: "v0.2"
 houdini: "20.0+"
 license: "Free to use"

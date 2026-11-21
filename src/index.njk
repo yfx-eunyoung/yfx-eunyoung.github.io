@@ -7,6 +7,11 @@ eleventyExcludeFromCollections: true
 {%- set latest = [] -%}
 {%- for key in ["rnd", "notes", "resources"] %}{% if collections[key][0] %}{% set latest = (latest.push(collections[key][0]), latest) %}{% endif %}{% endfor -%}
 {%- set boardKinds = ["notes", "rnd", "resources"] -%}
+{#- R&D card art: the post's illustrated preview (src/_includes/previews/rnd/<preview>.svg), else its pattern -#}
+{%- macro rndArt(p) -%}
+{%- if p.data.preview -%}<span class="rnd-pv">{% include "previews/rnd/" + p.data.preview + ".svg" %}<span class="pv-badge">{{ p.data.num }} · PREVIEW</span></span>
+{%- else -%}<span class="card-art {{ p.data.art or 'pat-a' }}"></span>{%- endif -%}
+{%- endmacro -%}
 <!-- HERO: multi-layer parallax + mouse 3D -->
 <section class="hero" id="top" data-hero>
   <span id="m-top" class="sr-only"></span>
@@ -150,7 +155,7 @@ eleventyExcludeFromCollections: true
       <div class="gallery-row">
         {%- for p in rnd %}{% set kk = (loop.index0 - mid) | round(0, "floor") %}
         <a class="g-card" href="{{ p.url }}" style="--k:{{ kk }};--d:{{ kk | abs }}">
-          <span class="card-art {{ p.data.art or 'pat-a' }}"></span>
+          {{ rndArt(p) }}
           <span class="card-text"><span class="card-meta"><span class="t">{{ p.data.topics | tagline }}</span><span class="n">{{ p.data.num }}</span></span><span class="card-title">{{ p.data.title }}</span><span class="card-body">{{ p.data.summary }}</span></span>
         </a>
         {%- endfor %}
@@ -159,7 +164,7 @@ eleventyExcludeFromCollections: true
     <div class="flow hscroll m-only" data-flow>
       {%- for p in rnd %}
       <a class="flow-card snap" href="{{ p.url }}">
-        <span class="card-art {{ p.data.art or 'pat-a' }}"></span>
+        {{ rndArt(p) }}
         <span class="card-text"><span class="card-meta"><span class="t">{{ p.data.topics | tagline }}</span><span class="n">{{ p.data.num }}</span></span><span class="card-title">{{ p.data.title }}</span><span class="card-body">{{ p.data.summaryShort or p.data.summary }}</span></span>
       </a>
       {%- endfor %}
@@ -182,12 +187,17 @@ eleventyExcludeFromCollections: true
       {%- for p in collections.resources | head(3) %}
       <article class="tool reveal" data-tilt>
         <span class="sheen"></span>
+        {%- if p.data.preview %}
+        <span class="pv" aria-hidden="true">{% include "previews/resources/" + p.data.preview + ".html" %}<span class="pv-badge">PREVIEW</span></span>
+        {%- endif %}
+        <div class="tool-inner">
         <div class="tool-top lift"><span class="chip chip-t">{{ p.data.type }}</span><span class="tool-ver">{{ p.data.version }}</span></div>
         <h3 class="lift"><a class="tool-link" href="{{ p.url }}">{{ p.data.title }}</a></h3>
         <p><span class="t-d">{{ p.data.summary }}</span><span class="t-m">{{ p.data.summaryShort or p.data.summary }}</span></p>
         <div class="tool-actions">
           <a class="btn btn-sm" href="{{ p.data.download if p.data.download else (p.url + '#download') }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M5 20h14"></path></svg>Download</a>
           <a class="btn btn-sm btn-ghost" href="{{ p.url }}">Docs</a>
+        </div>
         </div>
       </article>
       {%- endfor %}
