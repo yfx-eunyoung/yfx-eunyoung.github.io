@@ -33,7 +33,7 @@ export default function (eleventyConfig) {
     collection: { name: "posts", limit: 30 },
     metadata: {
       language: "en",
-      title: "YFXLabs — Notes from inside the solver",
+      title: "YFXLabs — Somewhere Between Nodes",
       subtitle: "Houdini tips, R&D breakdowns and resources from a Senior FX TD.",
       base: "https://yfx-eunyoung.github.io/",
       author: { name: "Eunyoung Kim", email: "eeeeeunyoung@gmail.com" },
