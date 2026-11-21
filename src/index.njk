@@ -227,7 +227,7 @@ f@pscale  *= fit(length(v@v), 0, chf(<span class="s">"vmax"</span>), 0.4, 1.2);<
       <p>Senior FX TD with about ten years of film work across Korea, Canada and Australia. <span class="t-d">YFXLabs is where I keep the fixes, experiments and tools that came out of it — written so the next person doesn't have to solve them twice.</span><span class="t-m">YFXLabs keeps the fixes, experiments and tools that came out of it.</span></p>
       <div class="btn-row">
         <a class="btn btn-primary" href="mailto:eeeeeunyoung@gmail.com">Get in touch</a>
-        <a class="btn" href="#about">Resume [PDF]</a>
+        {%- if resume %}<a class="btn" href="{{ resume.url }}" download="{{ resume.fileName }}">Resume [PDF]</a>{% else %}<a class="btn" href="#about">Resume [PDF]</a>{% endif %}
       </div>
     </div>
     <div class="facts reveal">

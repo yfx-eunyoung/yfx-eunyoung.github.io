@@ -48,6 +48,10 @@ Remove `sample: true` once a post has real content; it shows a SAMPLE chip.
 
 Write the body in normal Markdown. Code fences take a language: ` ```vex `, ` ```python `, ` ```hscript `. Images can sit next to the Markdown file: `![Wedge grid](wedge.jpg)`.
 
+## Resume PDF
+
+Upload your resume as `src/resume.pdf` (exactly this name). The "Resume [PDF]" button in the About section then downloads it as `Eunyoung-Kim-Resume.pdf`; the file is also at `/resume.pdf`. To update it, upload a new `resume.pdf` over the old one. Without the file, the button just scrolls to About.
+
 ## Files
 
 - `src/index.njk`: homepage (lists are generated from the posts)

@@ -9,6 +9,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/favicon.svg": "favicon.svg" });
   eleventyConfig.addPassthroughCopy({ "src/.nojekyll": ".nojekyll" });
+  // Resume: drop src/resume.pdf in and the homepage "Resume [PDF]" button downloads it
+  eleventyConfig.addPassthroughCopy({ "src/resume.pdf": "resume.pdf" });
   // Images and downloads that live next to posts (e.g. src/rnd/lava-crust/wedge.jpg)
   eleventyConfig.addPassthroughCopy("src/**/*.{jpg,jpeg,png,gif,webp,avif,mp4,webm,hda,hdanc,otl,zip,vfl,py}", { mode: "html-relative" });
 
