@@ -33,7 +33,7 @@
 <!-- NAV -->
 <header class="site-header">
   <nav class="nav" aria-label="Primary">
-    <a class="brand" href="{{ '#top' if isHome else '/' }}"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true"><rect x="1" y="1" width="28" height="28" rx="6" stroke="currentColor" stroke-width="1.5"></rect><path d="M8 9l7 7m0 0l7-7m-7 7v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path><circle cx="22" cy="21" r="2.2" fill="#FF6A2B"></circle></svg><span class="brand-word">YFX<span>Labs</span></span></a>
+    <a class="brand" title="KEY — Kim Eun Young" href="{{ '#top' if isHome else '/' }}"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true"><circle cx="9" cy="15" r="6.5" stroke="currentColor" stroke-width="1.8"></circle><circle cx="9" cy="15" r="2.2" fill="#FF6A2B"></circle><path d="M15.5 15H28.5M21 15v5.5M25.5 15v3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg><span class="brand-word">YFX<span>Labs</span></span></a>
     <div class="nav-links">
       <a href="{{ '#glance' if isHome else '/notes/' }}"{% if section == '/notes/' %} aria-current="page"{% endif %}>FX Notes</a>
       <a href="{{ '#rnd' if isHome else '/rnd/' }}"{% if section == '/rnd/' %} aria-current="page"{% endif %}>R&amp;D</a>
@@ -72,6 +72,7 @@
     </div>
     <div class="footer-bottom">
       <span>© 2026 yfxlabs.dev<span class="t-d"> — Archived between sims.</span></span>
+      <span class="key">K·E·Y — Kim Eun Young</span>
       <span class="loc">Melbourne, AU</span>
     </div>
   </div>

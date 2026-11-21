@@ -397,6 +397,7 @@ h1,h2,h3,p{margin:0}
   .footer-mail{font-size:12px;padding:12px 0}
   .footer-bottom{font-size:11px}
   .footer-bottom .loc::before{content:"· "}
+  .footer-bottom .key{order:3;flex-basis:100%}
   .footer-bottom{justify-content:flex-start;gap:4px}
 
   .reveal{animation-range:entry 0% cover 22%}
