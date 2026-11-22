@@ -58,6 +58,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("isoDate", (d) => new Date(d).toISOString().slice(0, 10));
   eleventyConfig.addFilter("tagline", (topics) => (topics || []).join(" · "));
   eleventyConfig.addFilter("head", (arr, n) => (arr || []).slice(0, n));
+  eleventyConfig.addFilter("newestFirst", (arr) => [...(arr || [])].sort(byDateDesc));
   eleventyConfig.addFilter("absUrl", (url) => new URL(url, "https://yfx-eunyoung.github.io/").href);
   eleventyConfig.addFilter("readMinutes", (html) => {
     const words = String(html || "").replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;

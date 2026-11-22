@@ -6,6 +6,8 @@ eleventyExcludeFromCollections: true
 {%- macro numOf(p) -%}{{ p.data.version if p.data.kind == "resources" else p.data.num }}{%- endmacro -%}
 {%- set latest = [] -%}
 {%- for key in ["rnd", "notes", "resources"] %}{% if collections[key][0] %}{% set latest = (latest.push(collections[key][0]), latest) %}{% endif %}{% endfor -%}
+{#- newest of each section, newest first -#}
+{%- set latest = latest | newestFirst -%}
 {%- set boardKinds = ["notes", "rnd", "resources"] -%}
 {#- R&D card art: the post's illustrated preview (src/_includes/previews/rnd/<preview>.svg), else its pattern -#}
 {%- macro rndArt(p) -%}
