@@ -25,12 +25,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap">
-<link rel="stylesheet" href="/assets/styles.css">
+<link rel="stylesheet" href="/assets/styles.css?v={{ build.v }}">
 {%- if not isHome %}
-<link rel="stylesheet" href="/assets/pages.css">
-<script src="/assets/pages.js" defer></script>
+<link rel="stylesheet" href="/assets/pages.css?v={{ build.v }}">
+<script src="/assets/pages.js?v={{ build.v }}" defer></script>
 {%- endif %}
-<script src="/assets/main.js" defer></script>
+<script src="/assets/main.js?v={{ build.v }}" defer></script>
 </head>
 <body>
 
