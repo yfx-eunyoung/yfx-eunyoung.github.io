@@ -57,6 +57,9 @@
 .prose em{color:var(--ink-2)}
 .prose ul,.prose ol{padding-left:1.3em}
 .prose li+li{margin-top:.4em}
+/* list item with two paragraphs (e.g. Korean + English): keep the pair tight, separate the items */
+.prose li>p+p{margin-top:.3em}
+.prose li:has(>p+p)+li{margin-top:1em}
 .prose li::marker{color:var(--ink-3);font-family:var(--f-mono);font-size:.85em}
 .prose :not(pre)>code{font-family:var(--f-mono);font-size:.84em;padding:2px 6px;border-radius:4px;background:var(--surface-2);color:var(--ink);overflow-wrap:anywhere}
 .prose blockquote{margin:1.6em 0;padding:18px 22px;border-left:3px solid var(--ember);border-radius:0 10px 10px 0;background:var(--surface);color:var(--ink-2);font-size:17px}

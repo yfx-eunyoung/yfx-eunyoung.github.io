@@ -206,19 +206,19 @@ Here is what I learned from these tests.
 
 1. Substeps를 높인다고 연기가 반드시 더 멀리 이동하는 것은 아니다. 이번 조건에서 그렇게 나온 것이다.
 
-1. Increasing Substeps does not always make smoke travel farther. That is what happened under the conditions of this test.
+   Increasing Substeps does not always make smoke travel farther. That is what happened under the conditions of this test.
 
 2. Substeps는 시간적 부드러움만 바꾸는 옵션이 아니다. 필드 계산 결과와 움직임 자체가 달라질 수 있다.
 
-2. Substeps does not only change how smooth the movement looks. It can also change the field calculations and the movement itself.
+   Substeps does not only change how smooth the movement looks. It can also change the field calculations and the movement itself.
 
 3. Sparse에서만 생기는 현상은 아니었다. Dense에서도 비슷한 velocity 차이가 나타났다.
 
-3. This did not happen only in Sparse. I saw a similar velocity difference in Dense too.
+   This did not happen only in Sparse. I saw a similar velocity difference in Dense too.
 
 4. Velocity Advection과 Pressure Projection 모두 영향을 줄 가능성은 있지만, 각각의 기여를 따로 확인하지는 못했다.
 
-4. Velocity Advection and Pressure Projection may both affect the result, but I could not measure their effects separately.
+   Velocity Advection and Pressure Projection may both affect the result, but I could not measure their effects separately.
 
 또 하나 궁금한 건 수렴 여부다. Substeps 1 → 2 → 4 → 8로 갈수록 계속 멀리 이동했다고 해서 8이 가장 정확한 결과라는 뜻은 아니다. Substeps를 더 높였을 때 차이가 점점 줄어드는지, 즉 Time-step Convergence가 나타나는지는 이번 테스트에서 확인하지 않았다.
 
