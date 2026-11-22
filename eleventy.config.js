@@ -1,6 +1,7 @@
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import loadLanguages from "prismjs/components/index.js";
+import { readFileSync } from "node:fs";
 
 const KINDS = ["notes", "rnd", "resources"];
 
@@ -58,6 +59,22 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("isoDate", (d) => new Date(d).toISOString().slice(0, 10));
   eleventyConfig.addFilter("tagline", (topics) => (topics || []).join(" · "));
   eleventyConfig.addFilter("head", (arr, n) => (arr || []).slice(0, n));
+  // Card image for a post: `cover:` in front matter, else the first image in the post body ("" if none; `cover: false` turns it off)
+  eleventyConfig.addFilter("cover", (p) => {
+    const d = (p && p.data) || {};
+    if (d.cover === false) return "";
+    let src = d.cover;
+    if (!src) {
+      try {
+        const md = readFileSync(p.inputPath, "utf8").replace(/^---[\s\S]*?\n---/, "");
+        const m = md.match(/!\[[^\]]*\]\(\s*<?([^)\s>]+)/) || md.match(/<img[^>]+src=["']([^"']+)/i);
+        src = m && m[1];
+      } catch (e) { src = ""; }
+    }
+    if (!src) return "";
+    if (/^([a-z]+:|\/)/i.test(src)) return src;
+    return new URL(src, "https://site.invalid" + p.url).pathname;
+  });
   eleventyConfig.addFilter("newestFirst", (arr) => [...(arr || [])].sort(byDateDesc));
   eleventyConfig.addFilter("absUrl", (url) => new URL(url, "https://yfx-eunyoung.github.io/").href);
   eleventyConfig.addFilter("readMinutes", (html) => {

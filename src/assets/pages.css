@@ -37,7 +37,8 @@
 
 /* body */
 .post-body{padding-top:72px;padding-bottom:40px}
-.prose{max-width:740px;margin:0 auto;font-size:18px;line-height:1.5;color:var(--ink);text-wrap:pretty}
+.prose{max-width:740px;margin:0 auto;font-size:18px;line-height:1.5;color:var(--ink);text-wrap:pretty;overflow-wrap:break-word}
+.prose p,.prose li,.prose a{overflow-wrap:anywhere}
 .prose>*+*{margin-top:1.35em}
 .prose h2{margin-top:2.2em;font-size:32px;line-height:1.1;font-weight:800;font-stretch:112%;letter-spacing:-.02em}
 .prose h3{margin-top:1.8em;font-size:22px;line-height:1.2;font-weight:800;font-stretch:108%}

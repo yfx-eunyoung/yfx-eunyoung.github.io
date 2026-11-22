@@ -30,6 +30,10 @@ draft: true             # optional: hides the post
 
 Resources also take `type: "HDA · SOP"`, `version: "v1.0"`, `houdini: "20.5+"`, `license` and `download` (a link, or a file path such as `yfx_orient_from_v.hda` placed next to the Markdown file).
 
+### Card image (`cover:`)
+
+On the homepage, a post's card (latest update, mobile carousel, R&D gallery, resource card) shows **the first image in the post** automatically. To pick a different one, add `cover: my-image.jpg` (path relative to the Markdown file, like in the body); `cover: false` turns it off. Posts without images fall back to `preview:` / `art`.
+
 ### Homepage card previews (`preview:`)
 
 On the homepage, R&D cards and Resource cards can show an illustration instead of a plain pattern. `preview:` names a file in `src/_includes/previews/` (without the extension):

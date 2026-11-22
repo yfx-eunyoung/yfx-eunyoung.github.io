@@ -90,7 +90,14 @@
     $$('[data-l]').forEach(function (el) {
       var k = el.getAttribute('data-l');
       if (k === 'href') el.setAttribute('href', f.href);
-      else if (k === 'pat') el.className = 'vp-art ' + f.pat;
+      else if (k === 'pat') {
+        el.className = 'vp-art ' + (f.cover ? 'has-cover' : f.pat);
+        var img = el.querySelector('.cover-img');
+        if (f.cover) {
+          if (!img) { img = document.createElement('img'); img.className = 'cover-img'; img.alt = ''; el.insertBefore(img, el.firstChild); }
+          img.src = f.cover;
+        } else if (img) img.remove();
+      }
       else if (k === 'code') { el.className = 'chip ' + f.chip; el.textContent = f.code; }
       else if (k === 'idx') el.textContent = (i + 1) + ' / ' + feed.length;
       else el.textContent = f[k];

@@ -11,7 +11,9 @@ eleventyExcludeFromCollections: true
 {%- set boardKinds = ["notes", "rnd", "resources"] -%}
 {#- R&D card art: the post's illustrated preview (src/_includes/previews/rnd/<preview>.svg), else its pattern -#}
 {%- macro rndArt(p) -%}
-{%- if p.data.preview -%}<span class="rnd-pv">{% include "previews/rnd/" + p.data.preview + ".svg" %}<span class="pv-badge">{{ p.data.num }} · PREVIEW</span></span>
+{%- set cv = p | cover -%}
+{%- if cv -%}<span class="rnd-pv"><img class="cover-img" src="{{ cv }}" alt="" loading="lazy"><span class="pv-badge">{{ p.data.num }}</span></span>
+{%- elif p.data.preview -%}<span class="rnd-pv">{% include "previews/rnd/" + p.data.preview + ".svg" %}<span class="pv-badge">{{ p.data.num }} · PREVIEW</span></span>
 {%- else -%}<span class="card-art {{ p.data.art or 'pat-a' }}"></span>{%- endif -%}
 {%- endmacro -%}
 <!-- HERO: multi-layer parallax + mouse 3D -->
@@ -55,7 +57,8 @@ eleventyExcludeFromCollections: true
           </div>
           {%- set f = latest[0] %}{%- set k = kinds[f.data.kind] %}
           <a class="vp-entry" data-l="href" href="{{ f.url }}">
-            <span class="vp-art {{ f.data.art or k.art }}" data-l="pat">
+            {%- set cv = f | cover %}
+            <span class="vp-art {{ 'has-cover' if cv else (f.data.art or k.art) }}" data-l="pat">{% if cv %}<img class="cover-img" src="{{ cv }}" alt="">{% endif %}
               <span class="chip {{ k.chip }}" data-l="code">{{ f | codeLabel }}</span>
               <span class="vp-new">NEW</span>
             </span>
@@ -90,7 +93,8 @@ eleventyExcludeFromCollections: true
   <div class="m-latest-track hscroll" data-mlatest>
     {%- for p in latest %}{% set k = kinds[p.data.kind] %}
     <a class="m-card snap" href="{{ p.url }}">
-      <span class="art {{ p.data.art or k.art }}"><span class="chip {{ k.chip }}">{{ p | codeLabel }}</span><span class="kind">{{ k.single }}</span></span>
+      {%- set cv = p | cover %}
+      <span class="art {{ 'has-cover' if cv else (p.data.art or k.art) }}">{% if cv %}<img class="cover-img" src="{{ cv }}" alt="" loading="lazy">{% endif %}<span class="chip {{ k.chip }}">{{ p | codeLabel }}</span><span class="kind">{{ k.single }}</span></span>
       <span class="txt"><span class="ttl">{{ p.data.title }}</span><span class="body">{{ p.data.summaryShort or p.data.summary }}</span><span class="meta">{{ p.date | isoDate }} · {{ p.data.version if p.data.kind == "resources" else (p.data.topics | tagline) }}</span></span>
     </a>
     {%- endfor %}
@@ -190,7 +194,10 @@ eleventyExcludeFromCollections: true
       {%- for p in collections.resources | head(3) %}
       <article class="tool reveal" data-tilt>
         <span class="sheen"></span>
-        {%- if p.data.preview %}
+        {%- set cv = p | cover %}
+        {%- if cv %}
+        <span class="pv has-cover" aria-hidden="true"><img class="cover-img" src="{{ cv }}" alt="" loading="lazy"><span class="pv-badge">PREVIEW</span></span>
+        {%- elif p.data.preview %}
         <span class="pv" aria-hidden="true">{% include "previews/resources/" + p.data.preview + ".html" %}<span class="pv-badge">PREVIEW</span></span>
         {%- endif %}
         <div class="tool-inner">
@@ -244,5 +251,5 @@ f@pscale  *= fit(length(v@v), 0, chf(<span class="s">"vmax"</span>), 0.4, 1.2);<
 
 <script type="application/json" id="feed-data">[
 {%- for p in latest %}{% set k = kinds[p.data.kind] %}
-{{ {title: p.data.title, body: p.data.summary, tag: (p.data.topics | tagline) + ((" · " + p.data.version) if p.data.kind == "resources" else ""), date: (p.date | isoDate), href: p.url, path: p.data.kind + "/" + p.fileSlug, code: p | codeLabel, chip: k.chip, pat: (p.data.art or k.art), kindLabel: k.feedLabel} | toJson | safe }}{% if not loop.last %},{% endif %}
+{{ {title: p.data.title, body: p.data.summary, tag: (p.data.topics | tagline) + ((" · " + p.data.version) if p.data.kind == "resources" else ""), date: (p.date | isoDate), href: p.url, path: p.data.kind + "/" + p.fileSlug, code: p | codeLabel, chip: k.chip, pat: (p.data.art or k.art), cover: (p | cover), kindLabel: k.feedLabel} | toJson | safe }}{% if not loop.last %},{% endif %}
 {%- endfor %}]</script>
