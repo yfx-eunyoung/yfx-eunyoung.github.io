@@ -37,7 +37,7 @@
 
 /* body */
 .post-body{padding-top:72px;padding-bottom:40px}
-.prose{max-width:740px;margin:0 auto;font-size:18px;line-height:1.6;color:var(--ink);text-wrap:pretty}
+.prose{max-width:740px;margin:0 auto;font-size:18px;line-height:1.5;color:var(--ink);text-wrap:pretty}
 .prose>*+*{margin-top:1.35em}
 .prose h2{margin-top:2.2em;font-size:32px;line-height:1.1;font-weight:800;font-stretch:112%;letter-spacing:-.02em}
 .prose h3{margin-top:1.8em;font-size:22px;line-height:1.2;font-weight:800;font-stretch:108%}
@@ -146,7 +146,7 @@
   .post-meta>div{padding-right:0;margin-right:24px}
   .dl-card{padding:20px}
   .post-body{padding-top:40px;padding-bottom:16px}
-  .prose{font-size:16.5px;line-height:1.6}
+  .prose{font-size:16.5px;line-height:1.5}
   .prose h2{font-size:26px}
   .prose h3{font-size:19px}
   .prose h2+h2{font-size:15.5px}

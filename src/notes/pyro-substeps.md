@@ -19,7 +19,7 @@ In Houdini, Substeps controls how many smaller time steps are used to calculate 
 
 We often think about Substeps when a Pyro or Particle simulation looks stepped or broken because the source is moving too fast or has strong velocity. By using more Substeps, the simulation can calculate what happens between frames more often. For Rigid Body simulations, Substeps can also help calculate fast collisions more accurately.
 
-그렇다면 Substeps를 무조건 높이면 더 정확하고 자연스러운 결과가 나올까? 궁금해서 간단한 테스트를 해봤다.
+그렇다면 Substeps를 무조건 높이면 더 정확하고 자연스러운 결과가 나올까? 궁금해서 간단한 Test를 해봤다.
 
 But does increasing Substeps always give us a more accurate and natural result? I was curious, so I decided to run a simple test.
 
@@ -140,7 +140,7 @@ This code samples velocity at the center of each density voxel. It uses the same
 
 After reading more about it, I learned that Pyro does not simply move smoke from one position to the next. The velocity field itself keeps changing over time, and density moves with that changing velocity field. Several calculations are involved, including Velocity Advection and Pressure Projection.
 
-그러니까 같은 한 프레임이라도 Substeps 1과 8은 velocity와 density가 변하는 과정을 서로 다른 시간 간격으로 계산하는 셈이다. 시작 조건이 같아도 결과가 달라질 수 있다는 이야기다. 그렇다고 이것만으로 왜 Substeps 8이 더 멀리 가는지 설명이 끝나는 건 아니다. 그래서 몇 가지 설정을 바꿔서 테스트해 봤다.
+그러니까 같은 한 프레임이라도 Substeps 1과 8은 velocity와 density가 변하는 과정을 서로 다른 시간 간격으로 계산하는 셈이다. 시작 조건이 같아도 결과가 달라질 수 있다는 이야기다. 그렇다고 이것만으로 왜 Substeps 8이 더 멀리 가는지 설명이 끝나는 건 아니다. 그래서 몇 가지 설정을 바꿔서 Test해 봤다.
 
 So even for the same frame, Substeps 1 and 8 calculate the changes in velocity and density using different time intervals. That means the results can be different, even with the same starting conditions. But this still does not explain exactly why Substeps 8 traveled farther. So I changed a few settings and tested again.
 
@@ -188,11 +188,11 @@ When I changed Advection-Reflection to Single-Project, the average X velocity fo
 
 ## So, what did I find?
 
-솔직히 이번 테스트에서 정확히 어느 계산이 이동 거리 차이를 만들었는지까지 찾아내지는 못했다. 파고들수록 내가 아는 범위만으로는 구분하기 어려운 부분이 있었다.
+솔직히 이번 Test에서 정확히 어느 계산이 이동 거리 차이를 만들었는지까지 찾아내지는 못했다. 파고들수록 내가 아는 범위만으로는 구분하기 어려운 부분이 있었다.
 
 To be honest, I could not find exactly which calculation caused the difference in travel distance. The more I looked into it, the harder it became to separate the different effects with what I know right now.
 
-그래도 이번 테스트로 확인한 건 있다. Substeps를 높이면 velocity advection이나 pressure projection을 포함한 필드 계산이 더 작은 시간 간격으로 진행된다. 그러면서 velocity가 시간에 따라 변해 온 과정, 즉 velocity history도 달라질 수 있다. 이번에는 Substeps 8에서 density-weighted X velocity가 더 높게 나타난 구간이 있었고, 연기도 더 멀리 이동했다. 다만 정확히 어느 계산이 얼마나 영향을 줬는지는 여전히 모른다.
+그래도 이번 Test로 확인한 건 있다. Substeps를 높이면 velocity advection이나 pressure projection을 포함한 필드 계산이 더 작은 시간 간격으로 진행된다. 그러면서 velocity가 시간에 따라 변해 온 과정, 즉 velocity history도 달라질 수 있다. 이번에는 Substeps 8에서 density-weighted X velocity가 더 높게 나타난 구간이 있었고, 연기도 더 멀리 이동했다. 다만 정확히 어느 계산이 얼마나 영향을 줬는지는 여전히 모른다.
 
 Still, I did learn something from this test. With more Substeps, field calculations, including Velocity Advection and Pressure Projection, happen over smaller time intervals. Because of this, the way velocity changes over time—its velocity history—can also be different. In this test, Substeps 8 had higher density-weighted X velocity during some frames, and the smoke traveled farther.
 
@@ -200,7 +200,7 @@ Still, I did learn something from this test. With more Substeps, field calculati
 
 One thing to keep in mind is that density-weighted X velocity is not the momentum of the whole velocity field. It is a weighted average in the areas where smoke exists. So the value can change because of the velocity itself, but also because of where the density is distributed.
 
-이번 테스트를 통해 정리해 보면 다음과 같다.
+이번 Test를 통해 정리해 보면 다음과 같다.
 
 Here is what I learned from these tests.
 
@@ -220,7 +220,7 @@ Here is what I learned from these tests.
 
    Velocity Advection and Pressure Projection may both affect the result, but I could not measure their effects separately.
 
-또 하나 궁금한 건 수렴 여부다. Substeps 1 → 2 → 4 → 8로 갈수록 계속 멀리 이동했다고 해서 8이 가장 정확한 결과라는 뜻은 아니다. Substeps를 더 높였을 때 차이가 점점 줄어드는지, 즉 Time-step Convergence가 나타나는지는 이번 테스트에서 확인하지 않았다.
+또 하나 궁금한 건 수렴 여부다. Substeps 1 → 2 → 4 → 8로 갈수록 계속 멀리 이동했다고 해서 8이 가장 정확한 결과라는 뜻은 아니다. Substeps를 더 높였을 때 차이가 점점 줄어드는지, 즉 Time-step Convergence가 나타나는지는 이번 Test에서 확인하지 않았다.
 
 Another question is convergence. Just because the smoke traveled farther as I increased Substeps from 1 to 2 to 4 to 8 does not mean 8 is the most accurate result. I did not test whether the difference becomes smaller at higher Substeps, which is called Time-step Convergence.
 
