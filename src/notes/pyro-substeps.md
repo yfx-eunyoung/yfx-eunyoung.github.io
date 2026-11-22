@@ -1,5 +1,5 @@
 ---
-title: "Pyro simulation에서는 substeps 값 차이에 따른 결과 / How Substep Values Change the Results of a Pyro Simulation"
+title: "How Substep Values Change the Results of a Pyro Simulation"
 num: "001"
 date: 2026-11-22
 topics: [PYRO, SOLVERS]
