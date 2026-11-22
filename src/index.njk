@@ -205,7 +205,7 @@ eleventyExcludeFromCollections: true
         <h3 class="lift"><a class="tool-link" href="{{ p.url }}">{{ p.data.title }}</a></h3>
         <p><span class="t-d">{{ p.data.summary }}</span><span class="t-m">{{ p.data.summaryShort or p.data.summary }}</span></p>
         <div class="tool-actions">
-          <a class="btn btn-sm" href="{{ p.data.download if p.data.download else (p.url + '#download') }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M5 20h14"></path></svg>Download</a>
+          <a class="btn btn-sm" href="{{ (p.data.download | postUrl(p.url)) if p.data.download else (p.url + '#download') }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M5 20h14"></path></svg>Download</a>
           <a class="btn btn-sm btn-ghost" href="{{ p.url }}">Docs</a>
         </div>
         </div>

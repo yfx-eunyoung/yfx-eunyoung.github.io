@@ -15,7 +15,7 @@ export default function (eleventyConfig) {
   // Resume: drop src/resume.pdf in and the homepage "Resume [PDF]" button downloads it
   eleventyConfig.addPassthroughCopy({ "src/resume.pdf": "resume.pdf" });
   // Images and downloads that live next to posts (e.g. src/rnd/lava-crust/wedge.jpg)
-  eleventyConfig.addPassthroughCopy("src/**/*.{jpg,jpeg,png,gif,webp,avif,mp4,webm,hda,hdanc,otl,zip,vfl,py}", { mode: "html-relative" });
+  eleventyConfig.addPassthroughCopy("src/**/*.{jpg,jpeg,png,gif,webp,avif,mp4,webm,hda,hdanc,hdalc,otl,hip,hipnc,hiplc,zip,vfl,py}", { mode: "html-relative" });
 
   // Code highlighting, with a small VEX grammar on top of C
   eleventyConfig.addPlugin(syntaxHighlight, {
@@ -74,6 +74,11 @@ export default function (eleventyConfig) {
     if (!src) return "";
     if (/^([a-z]+:|\/)/i.test(src)) return src;
     return new URL(src, "https://site.invalid" + p.url).pathname;
+  });
+  // A path written relative to a post (e.g. `download: my-tool/tool.hdanc`) → site-absolute URL, so it works from any page
+  eleventyConfig.addFilter("postUrl", (path, base) => {
+    if (!path || /^([a-z]+:|\/|#)/i.test(path)) return path;
+    return new URL(path, "https://site.invalid" + base).pathname;
   });
   eleventyConfig.addFilter("newestFirst", (arr) => [...(arr || [])].sort(byDateDesc));
   eleventyConfig.addFilter("absUrl", (url) => new URL(url, "https://yfx-eunyoung.github.io/").href);

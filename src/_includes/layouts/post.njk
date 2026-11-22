@@ -36,7 +36,7 @@ layout: layouts/base.njk
           <div><dt>Updated</dt><dd>{{ page.date | isoDate }}</dd></div>
         </dl>
         {%- if download %}
-        <a class="btn btn-primary dl-btn" href="{{ download }}" download><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M5 20h14"></path></svg>Download {{ version }}</a>
+        <a class="btn btn-primary dl-btn" href="{{ download | postUrl(page.url) }}" download><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M5 20h14"></path></svg>Download {{ version }}</a>
         {%- else %}
         <span class="btn dl-btn is-off" aria-disabled="true">Download coming soon</span>
         {%- endif %}

@@ -28,7 +28,7 @@ draft: true             # optional: hides the post
 ---
 ```
 
-Resources also take `type: "HDA · SOP"`, `version: "v1.0"`, `houdini: "20.5+"`, `license` and `download` (a link, or a file path such as `yfx_orient_from_v.hda` placed next to the Markdown file).
+Resources also take `type: "HDA · SOP"`, `version: "v1.0"`, `houdini: "20.5+"`, `license` and `download` (a link, or a file path relative to the Markdown file, e.g. `my-tool/my_tool.hdanc` with the file in `src/resources/my-tool/`). Houdini files (`.hda`, `.hdanc`, `.hdalc`, `.otl`, `.hip`, `.hipnc`, `.hiplc`) and `.zip` are published as downloads.
 
 ### Card image (`cover:`)
 
