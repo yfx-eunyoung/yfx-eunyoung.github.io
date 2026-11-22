@@ -1,5 +1,5 @@
 ---
-title: "How Substep Values Change the Results of a Pyro Simulation"
+title: "How Substep Values Change the Results of a Pyro Simulation (Ko/En)"
 num: "001"
 date: 2026-11-22
 topics: [PYRO, SOLVERS]
