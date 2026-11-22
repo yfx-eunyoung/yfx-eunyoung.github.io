@@ -32,7 +32,7 @@ Resources also take `type: "HDA · SOP"`, `version: "v1.0"`, `houdini: "20.5+"`,
 
 ### Card image (`cover:`)
 
-On the homepage, a post's card (latest update, mobile carousel, R&D gallery, resource card) shows **the first image in the post** automatically. To pick a different one, add `cover: my-image.jpg` (path relative to the Markdown file, like in the body); `cover: false` turns it off. Posts without images fall back to `preview:` / `art`.
+The image card at the top of the post page and the post's homepage cards (latest update, mobile carousel, R&D gallery, resource card) show **the first image in the post** automatically. To pick a different one, add `cover: my-image.jpg` (path relative to the Markdown file, like in the body); `cover: false` turns it off. Posts without images fall back to `preview:` / `art`.
 
 ### Homepage card previews (`preview:`)
 

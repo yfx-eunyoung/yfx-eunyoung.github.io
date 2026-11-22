@@ -42,7 +42,8 @@ layout: layouts/base.njk
         {%- endif %}
       </aside>
       {%- else %}
-      <div class="post-art {{ art or k.art }}" aria-hidden="true"><span class="chip {{ k.chip }}">{{ code }}</span></div>
+      {%- set cv = {data: {cover: cover}, inputPath: page.inputPath, url: page.url} | cover %}
+      <div class="post-art {{ 'has-cover' if cv else (art or k.art) }}" aria-hidden="true">{% if cv %}<img class="cover-img" src="{{ cv }}" alt="">{% endif %}<span class="chip {{ k.chip }}">{{ code }}</span></div>
       {%- endif %}
     </div>
   </header>
