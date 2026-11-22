@@ -39,8 +39,6 @@ I usually check Substeps first. But in the end, I often need to stretch the emit
 
 So what does Substeps actually change?
 
-## 테스트 01 — Substeps 1 / 2 / 4 / 8
-
 ## Test 01 — Substeps 1 / 2 / 4 / 8
 
 같은 sphere 소스를 이용해 Pyro 시뮬레이션 네 개를 만들었다. Voxel Size는 0.1, 초기 velocity는 `{10, 0, 0}`으로 설정했다. Density와 velocity는 첫 프레임에만 소싱했다. Velocity는 Copy 방식으로 입력했지만, 시뮬레이션 내내 10으로 고정한 것은 아니다.
@@ -146,7 +144,7 @@ After reading more about it, I learned that Pyro does not simply move smoke from
 
 So even for the same frame, Substeps 1 and 8 calculate the changes in velocity and density using different time intervals. That means the results can be different, even with the same starting conditions. But this still does not explain exactly why Substeps 8 traveled farther. So I changed a few settings and tested again.
 
-## 테스트 02 — Advection Scheme 변경
+## Test 02 — Advection Scheme 변경
 
 ## Test 02 — Changing the Advection Scheme
 
@@ -154,7 +152,7 @@ Velocity Advection을 Semi-Lagrangian에서 Modified MacCormack으로 바꿔봤�
 
 I changed Velocity Advection from Semi-Lagrangian to Modified MacCormack. But the velocity difference between Substeps 1 and 8 was still there. So it was hard to say that one advection scheme was the only cause.
 
-## 테스트 03 — Sparse에서 Dense로
+## Test 03 — Sparse에서 Dense로
 
 ## Test 03 — From Sparse to Dense
 
@@ -168,7 +166,7 @@ I wondered if the Sparse simulation was causing this, so I also tested Dense. Bu
 
 *Velocity comparison in the Dense simulation*
 
-## 테스트 04 — Pressure와 Advection-Reflection
+## Test 04 — Pressure와 Advection-Reflection
 
 ## Test 04 — Pressure and Advection-Reflection
 
