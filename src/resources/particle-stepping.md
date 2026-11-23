@@ -7,17 +7,17 @@ license: "Free — Non-Commercial"
 download: "particle-stepping/sop_mac.Particle_Stepping_key.1.0.hdanc"
 date: 2026-11-22
 topics: [HDA, POP, PARTICLES]
-summary: "Free non-commercial Houdini HDA that reduces particle stepping artifacts using velocity-based interpolation."
-summaryShort: "Reduce particle stepping with velocity-based interpolation."
+summary: "Free non-commercial Houdini HDA that reduces particle stepping artifacts by adjusting particle distance based on velocity."
+summaryShort: "Reduce particle stepping by adjusting distance based on velocity."
 ---
 
 빠르게 움직이는 파티클에서 발생하는 Stepping 현상을 시뮬레이션 Substeps를 높이지 않고 완화하는 HDA입니다.
 
 Reduce visible stepping artifacts in fast-moving particle simulations without increasing simulation substeps.
 
-파티클의 Velocity 속성(`v`)을 사용해 프레임 사이의 이동 거리를 추정하고 중간 포인트를 생성하여 더 연속적인 파티클 궤적을 만듭니다.
+파티클의 Velocity 속성(`v`)을 기반으로 파티클의 이동 거리를 조절해 Stepping 현상을 완화합니다.
 
-This HDA uses the particle velocity attribute (`v`) to estimate travel between frames and generate intermediate points for smoother, more continuous particle trails.
+This HDA reduces stepping by adjusting how far each particle moves, based on its velocity attribute (`v`).
 
 ![Particle stepping comparison in Houdini](./particle-stepping/images/particle-stepping-comparison.png)
 
